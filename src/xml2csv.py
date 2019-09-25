@@ -31,11 +31,11 @@ class Xml2Csv(object):
     def train(cls):
         root_path = Path(os.getcwd())
         root_link = root_path.parent
-        ls_file = os.listdir(os.path.join(root_link, 'imgs'))
+        ls_file = os.listdir(os.path.join(root_link, 'xmls'))
         for file in ls_file:
             if '.xml' in file:
-                image_path = os.path.join(root_link, 'imgs/{}'.format(file))
+                image_path = os.path.join(root_link, 'xmls/{}'.format(file))
                 xml_df = cls._xml_to_csv(image_path)
-                # Storing the csv file into the data directory.
-                xml_df.to_csv(os.path.join(root_link, 'data/{}.csv'.format(os.path.splitext(file)[0])))
+                # Storing the csv file into the csvs directory.
+                xml_df.to_csv(os.path.join(root_link, 'csvs/{}.csv'.format(os.path.splitext(file)[0])))
                 print('Successfully converted xml to csv.')
